@@ -55,7 +55,7 @@ jobs:
         - restore_cache:
             keys:
               - siril-master-v1
-              - siril-deps-v1
+              - siril-deps-v2
               - bootstrap-v1
         - run:
             name: Bootstrap
@@ -67,16 +67,16 @@ jobs:
             paths:
               - ~/gtk
             key: bootstrap-v1
-#        - run:
-#            name: Build Siril dependencies FIXME
-#            command: source ~/.profile && jhbuild build suitesparse $(jhbuild info gimp|grep '^Requires:'|sed -e 's|^Requires:||' -e 's|gegl||'|tr -d ',')
+        - run:
+            name: Build Siril dependencies
+            command: source ~/.profile && jhbuild build $(jhbuild info siril|grep '^Requires:'|sed -e 's|^Requires:||' -e 's|gegl||'|tr -d ',')
         - run:
             name: Cleanup
             command: find  ~/gtk/source -type d -mindepth 1 -maxdepth 1 | xargs -I% rm -rf %/*
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-deps-v1
+            key: siril-deps-v2
         - run:
             name: Build SIRIL # FIXME
             command: |
