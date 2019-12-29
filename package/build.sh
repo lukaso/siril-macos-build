@@ -8,15 +8,15 @@ then
   exit 2
 fi
 
-printf "Determining GIMP version: "
+printf "Determining SIRIL version: "
 
-rm -f GIMP_VERSION
+rm -f SIRIL_VERSION
 
-GIMP_VERSION="$(gimp --version | sed 's|GNU Image Manipulation Program version ||')"
+SIRIL_VERSION="$(gimp --version | sed 's|GNU Image Manipulation Program version ||')"
 
-echo "$GIMP_VERSION"
+echo "$SIRIL_VERSION"
 
-cat info-2.10.plist.tmpl | sed "s|%VERSION%|${GIMP_VERSION}|g" > info-2.10.plist
+cat info-2.10.plist.tmpl | sed "s|%VERSION%|${SIRIL_VERSION}|g" > info-2.10.plist
 
 echo "Copying charset.alias"
 cp "/usr/lib/charset.alias" "${HOME}/gtk/inst/lib/"
@@ -91,13 +91,6 @@ pushd ${PACKAGE_DIR}/GIMP-2.10.app/Contents/MacOS
  ln -s python python2
 popd
 
-echo "copy xdg-email wrapper to the package"
-cp xdg-email ${PACKAGE_DIR}/GIMP-2.10.app/Contents/MacOS
-
-echo "copy pygimp.interp to the package"
-mkdir -p ${PACKAGE_DIR}/GIMP-2.10.app/Contents/Resources/lib/gimp/2.0/interpreters
-cp pygimp.interp ${PACKAGE_DIR}/GIMP-2.10.app/Contents/Resources/lib/gimp/2.0/interpreters
-
 echo "Creating pyc files"
 python -m compileall -q ${PACKAGE_DIR}/GIMP-2.10.app
 
@@ -117,14 +110,14 @@ fi
 echo "Building DMG"
 if [ -z "${CIRCLECI}" ]
 then
-  DMGNAME="gimp-${GIMP_VERSION}-x86_64.dmg"
+  DMGNAME="gimp-${SIRIL_VERSION}-x86_64.dmg"
 else
-  DMGNAME="gimp-${GIMP_VERSION}-x86_64-b${CIRCLE_BUILD_NUM}-${CIRCLE_BRANCH}.dmg"
+  DMGNAME="gimp-${SIRIL_VERSION}-x86_64-b${CIRCLE_BUILD_NUM}-${CIRCLE_BRANCH}.dmg"
 fi
 
 mkdir -p /tmp/artifacts/
 rm -f /tmp/tmp.dmg
-rm -f "gimp-${GIMP_VERSION}-x86_64.dmg"
+rm -f "gimp-${SIRIL_VERSION}-x86_64.dmg"
 
 cd create-dmg
 

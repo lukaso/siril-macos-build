@@ -18,7 +18,7 @@
          app. If you leave out the path, the current directory is
          used. Note the usage of an environment variable here again.
     -->
-    <destination overwrite="yes">${env:HOME}/gimp-osx-app</destination>
+    <destination overwrite="yes">${env:HOME}/siril-osx-app</destination>
     <image>
       <!-- Not implemented yet (DMG image). -->
     </image>
@@ -40,15 +40,9 @@
     <!-- <runtime copy="yes">/usr/bin/python</runtime -->
     <!-- Indicate the active gtk version to use. This is needed only
          for gtk+-3.0 projects. -->
-    <gtk>gtk+-2.0</gtk>
+    <gtk>gtk+-3.0</gtk>
   </meta>
-  <!-- We need to pack our own Python to avoid compatibility problems. -->
-  <binary dest="${bundle}/Contents/MacOS">
-    ${prefix}/bin/python
-  </binary>
-  <binary dest="${bundle}/Contents/MacOS">
-    ${prefix}/bin/gegl
-  </binary>
+
   <!-- gimp additional binaries -->
   <binary dest="${bundle}/Contents/MacOS">${prefix}/bin/gimp-console-2.10</binary>
   <binary dest="${bundle}/Contents/MacOS">${prefix}/bin/gimp-debug-tool-2.0</binary>
@@ -57,9 +51,7 @@
   <!-- Copy in Info.plist -->
   <plist>${project}/info-2.10.plist</plist>
   <!-- Copy in libpyglib, which will pull in other dependencies we need -->
-  <binary>
-    ${prefix}/lib/libpyglib-2.0-python.0.dylib
-  </binary>
+
   <!-- Gtk+ is required by python modules which aren't searched for
        dependencies, so we have to pull it in explicitly. It will
        bring Pango and Cairo with it. Note the use of ${gtkversion},
@@ -68,35 +60,13 @@
   <binary>
     ${prefix}/lib/libgtk-quartz-${gtkversion}.0.dylib
   </binary>
-  <binary>
- ${prefix}/lib/libgegl-sc-0.4.dylib
-</binary>
-  <!-- We have to pull in the python modules, which are mixed python
-       and loadable modules.  -->
 
-  <binary recurse="True">
-    ${prefix}/lib/python2.7/*.so
-  </binary>
   <binary>
   ${prefix}/lib/gio/modules
   </binary>
-  <data recurse="True">
-    ${prefix}/lib/python2.7/*.py
-  </data>
 
-  <data>
-    ${prefix}/lib/python2.7/config/
-  </data>
-
-  <data recurse="True">
-    ${prefix}/lib/pygtk/2.0/*.py
-  </data>
-  <data>
-    ${prefix}/include/python2.7/pyconfig.h
-  </data>
-
-  <!-- Name of main gimp binary -->
-  <main-binary>${prefix}/bin/gimp-2.10</main-binary>
+  <!-- Name of main siril binary -->
+  <main-binary>${prefix}/bin/siril</main-binary>
   <!-- Copy in gimp plugins -->
   <binary>${prefix}/lib/gimp/2.0/plug-ins/*</binary>
   <!-- Copy in gimp modules -->
