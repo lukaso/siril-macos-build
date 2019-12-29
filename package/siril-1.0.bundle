@@ -67,19 +67,8 @@
 
   <!-- Name of main siril binary -->
   <main-binary>${prefix}/bin/siril</main-binary>
-  <!-- Copy in gimp plugins -->
-  <binary>${prefix}/lib/gimp/2.0/plug-ins/*</binary>
-  <!-- Copy in gimp modules -->
-  <binary>${prefix}/lib/gimp/2.0/modules/*.so</binary>
-  <!-- Copy in gimp python modules -->
-  <binary>${prefix}/lib/gimp/2.0/python/*.so</binary>
-  <data>${prefix}/lib/gimp/2.0/python/*.py</data>
   <!-- Copy in GTK+ modules -->
   <binary>${prefix}/lib/${gtkdir}/modules/*.so</binary>
-  <!-- Copy in babl modules -->
-  <binary>${prefix}/lib/babl-0.1/*.dylib</binary>
-  <!-- Copy in gegl modules -->
-  <binary>${prefix}/lib/gegl-0.4/*.dylib</binary>
   <!-- Copy in GTK+ themeing engines -->
   <binary>${prefix}/lib/${gtkdir}/${pkg:${gtk}:gtk_binary_version}/engines/*.so</binary>
   <!-- Copy in GTK+ printer backends -->
@@ -102,10 +91,6 @@
   <!-- Gimp data -->
   <data>${prefix}/etc/gimp/2.0/*</data>
   <data dest="${bundle}/Contents/Resources/share/gimp">${prefix}/share/gimp</data>
-  <!-- brushes -->
-  <data>${prefix}/share/mypaint-data</data>
-  <!-- Pango data -->
-  <!-- <data>${prefix}/etc/pango/pango.modules</data> -->
   <!-- XML data -->
   <data>${prefix}/share/xml/catalog</data>
   <!-- locale (TODO: trim) -->
@@ -117,20 +102,7 @@
   <data>${prefix}/share/themes</data>
   <!-- iso codes -->
   <data>${prefix}/share/xml/iso-codes</data>
-  <!-- libwmf fonts -->
-  <data>${prefix}/share/libwmf</data>
-  <!-- GTK+ theme data -->
-  <!-- <data>${prefix}/share/gtk-engines/*.xml</data> -->
-  <!-- mitch says this will change default theme, didn't work. -->
-  <!-- <data dest="${bundle}/Contents/Resources/etc/${gtkdir}/gtkrc">
-    ${project}/gtkrc
-  </data>
--->
-  <!-- Interesting defaults -->
-  <!-- <data dest="${bundle}/Contents/Resources/etc/gimp/2.0/gimprc">
-    ${project}/gimprc
-  </data>
--->
+
   <!-- Icons -->
   <data dest="${bundle}/Contents/Resources">${project}/gimp.icns</data>
   <data dest="${bundle}/Contents/Resources">${project}/xcf.icns</data>
