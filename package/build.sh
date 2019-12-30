@@ -12,7 +12,7 @@ printf "Determining SIRIL version: "
 
 rm -f SIRIL_VERSION
 
-SIRIL_VERSION="$(gimp --version | sed 's|GNU Image Manipulation Program version ||')"
+SIRIL_VERSION="$(siril --version | awk '{print $2}')"
 
 echo "$SIRIL_VERSION"
 
@@ -21,12 +21,12 @@ cat info-2.10.plist.tmpl | sed "s|%VERSION%|${SIRIL_VERSION}|g" > info-2.10.plis
 echo "Copying charset.alias"
 cp "/usr/lib/charset.alias" "${HOME}/gtk/inst/lib/"
 echo "Creating bundle"
-gtk-mac-bundler gimp-2.10.bundle
+gtk-mac-bundler siril.bundle
 
 BASEDIR=$(dirname "$0")
 
 #  target directory
-PACKAGE_DIR="${HOME}/gimp-osx-app"
+PACKAGE_DIR="${HOME}/siril-osx-app"
 
 echo "Removing pathnames from the libraries and binaries"
 # fix permission for some libs
@@ -82,17 +82,6 @@ sed -i.old 's|@executable_path/../Resources/lib/||' \
 echo "fixing IMM cache"
 sed -i.old 's|@executable_path/../Resources/lib/||' \
     ${PACKAGE_DIR}/GIMP-2.10.app/Contents/Resources/etc/gtk-2.0/gtk.immodules
-
-echo "create missing links. should we use wrappers instead?"
-
-pushd ${PACKAGE_DIR}/GIMP-2.10.app/Contents/MacOS
- ln -s gimp-console-2.10 gimp-console
- ln -s gimp-debug-tool-2.0 gimp-debug-tool
- ln -s python python2
-popd
-
-echo "Creating pyc files"
-python -m compileall -q ${PACKAGE_DIR}/GIMP-2.10.app
 
 echo "Signing libs"
 

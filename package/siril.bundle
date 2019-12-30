@@ -43,11 +43,6 @@
     <gtk>gtk+-3.0</gtk>
   </meta>
 
-  <!-- gimp additional binaries -->
-  <binary dest="${bundle}/Contents/MacOS">${prefix}/bin/gimp-console-2.10</binary>
-  <binary dest="${bundle}/Contents/MacOS">${prefix}/bin/gimp-debug-tool-2.0</binary>
-  <binary dest="${bundle}/Contents/MacOS">${prefix}/bin/gimptool-2.0</binary>
-
   <!-- Copy in Info.plist -->
   <plist>${project}/info-2.10.plist</plist>
   <!-- Copy in libpyglib, which will pull in other dependencies we need -->
@@ -58,7 +53,7 @@
        which expands to either 2.0 or 3.0, depending on which value of
        gtk is specified.-->
   <binary>
-    ${prefix}/lib/libgtk-quartz-${gtkversion}.0.dylib
+    ${prefix}/lib/libgtk-${gtkversion}.dylib
   </binary>
 
   <binary>
