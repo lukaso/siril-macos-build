@@ -1,3 +1,5 @@
+# TODO - update for SiriL
+
 # Build GIMP/macOS inside CircleCI
 
 This repository contains files related to GIMP/macOS build using CircleCI.
@@ -5,7 +7,7 @@ This repository contains files related to GIMP/macOS build using CircleCI.
 ## Build process description
 
 To build GIMP/macOS we are using [fork](https://gitlab.gnome.org/samm-git/gtk-osx/tree/gimp)
-of the [gtk-osx](https://gitlab.gnome.org/GNOME/gtk-osx) project (`gimp` branch). 
+of the [gtk-osx](https://gitlab.gnome.org/GNOME/gtk-osx) project (`gimp` branch).
 Fork adds modules related to GIMP and some gimp-specific patches to GTK.
 Currently build is done using CircleCI.
 
