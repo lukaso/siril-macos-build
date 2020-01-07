@@ -9,9 +9,6 @@ jobs:
         - run:
             name: Cleanup /usr/local
             command: sudo rm -rf /usr/local/*
-#        - run:
-#            name: Setup rust
-#            command: curl https://sh.rustup.rs -sSf | sh -s -- -y
         - run:
             name: Setup Python3
             command: |
@@ -57,8 +54,8 @@ jobs:
         # we can try to make it automatically depended on the corresponding modules
         - restore_cache:
             keys:
-              - siril-master-v3
-              - siril-deps-v4
+              - siril-master-v4
+              - siril-deps-v5
               - bootstrap-v2
         - run:
             name: Bootstrap
@@ -79,16 +76,16 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-deps-v4
+            key: siril-deps-v5
         - run:
-            name: Build SIRIL # FIXME
+            name: Build SIRIL
             command: |
               source ~/.profile
               jhbuild build siril
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-master-v3
+            key: siril-master-v4
 #        - run:
 #            name: Importing signing certificate
 #            command: |
