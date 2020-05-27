@@ -35,7 +35,3 @@ I was able to get working builds in the VirtualBox VM, it works stable enough fo
  - [Gtk-OSX](https://gitlab.gnome.org/GNOME/gtk-osx/) project to simplify building MacOS application bundles for Gtk+-based applications
  - [gimp-plugins-collection](https://github.com/aferrero2707/gimp-plugins-collection)
  - CircleCI [siril-macos-build project](https://circleci.com/gh/samm-git/siril-macos-build)
-
-## Known bugs and limitations (merge requests are welcome!)
-
-- Some of the system modifiers are not working correctly, e.g. `Command+H`, `Command+~`, etc.
