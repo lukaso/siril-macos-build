@@ -30,7 +30,7 @@ jobs:
             command: |
               cd $HOME
               mkdir -p ~/.config && mv ~/project/jhbuildrc-gtk-osx-gimp ~/.config/jhbuildrc-custom
-              curl  https://gitlab.gnome.org/samm-git/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
+              curl  https://gitlab.gnome.org/lock042/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
               chmod +x gtk-osx-setup.sh
               echo 'export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH:$HOME/.new_local/bin"' >> ~/.profile
               echo 'export ARCHFLAGS="-arch x86_64"' >> ~/.profile
@@ -48,7 +48,7 @@ jobs:
             name: Setup gtk-mac-bundler
             command: |
               cd ~/Source
-              git clone https://github.com/samm-git/gtk-mac-bundler -b fix-otool
+              git clone https://github.com/lock042/gtk-mac-bundler.git -b fix-otool
               cd gtk-mac-bundler
               make install
         # we can try to make it automatically depended on the corresponding modules
