@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build-siril-master:
     macos:
@@ -22,9 +22,9 @@ jobs:
               sudo curl -L 'https://github.com/phracker/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.9.sdk.tar.xz' | sudo tar -xzf -
               echo 'export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.9.sdk' > ~/.profile
               echo 'export MACOSX_DEPLOYMENT_TARGET=10.9' >> ~/.profile
-        - restore_cache:
-            keys:
-              - jhbuild-v1
+#        - restore_cache:
+#            keys:
+#              - jhbuild-v1
         - run:
             name: Setup JHBuild
             command: |
@@ -52,11 +52,11 @@ jobs:
               cd gtk-mac-bundler
               make install
         # we can try to make it automatically depended on the corresponding modules
-        - restore_cache:
-            keys:
-              - siril-master-v4
-              - siril-deps-v5
-              - bootstrap-v2
+#        - restore_cache:
+#            keys:
+#              - siril-master-v4
+#              - siril-deps-v5
+#              - bootstrap-v2
         - run:
             name: Bootstrap
             command: source ~/.profile && jhbuild build meta-gtk-osx-freetype meta-gtk-osx-bootstrap meta-gtk-osx-gtk3
@@ -115,7 +115,7 @@ jobs:
             destination: builds
 
 workflows:
-  version: 2
+  version: 2.1
   build-different-versions:
     jobs:
       - build-siril-master
