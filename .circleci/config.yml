@@ -1,4 +1,4 @@
-version: 2
+version: 3
 jobs:
   build-siril-master:
     macos:
@@ -115,7 +115,7 @@ jobs:
             destination: builds
 
 workflows:
-  version: 2
+  version: 3
   build-different-versions:
     jobs:
       - build-siril-master
