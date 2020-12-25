@@ -24,13 +24,13 @@ jobs:
               echo 'export MACOSX_DEPLOYMENT_TARGET=10.9' >> ~/.profile
         - restore_cache:
             keys:
-              - jhbuild-v5
+              - jhbuild-v10
         - run:
             name: Setup JHBuild
             command: |
               cd $HOME
               mkdir -p ~/.config && mv ~/project/jhbuildrc-gtk-osx-gimp ~/.config/jhbuildrc-custom
-              curl  https://gitlab.gnome.org/lock042/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
+              curl https://gitlab.gnome.org/samm-git/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
               chmod +x gtk-osx-setup.sh
               echo 'export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH:$HOME/.new_local/bin"' >> ~/.profile
               echo 'export ARCHFLAGS="-arch x86_64"' >> ~/.profile
@@ -43,18 +43,18 @@ jobs:
               - ~/.new_local
               - ~/gtk
               - ~/.config
-            key: jhbuild-v5
+            key: jhbuild-v10
         - run:
             name: Setup gtk-mac-bundler
             command: |
               cd ~/Source
-              git clone https://github.com/lock042/gtk-mac-bundler.git -b fix-otool
+              git clone https://github.com/samm-git/gtk-mac-bundler -b fix-otool
               cd gtk-mac-bundler
               make install
         # we can try to make it automatically depended on the corresponding modules
         - restore_cache:
             keys:
-              - siril-0.99.2-v1
+              - siril-0.99.7
               - siril-deps-v5
               - bootstrap-v2
         - run:
@@ -85,7 +85,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-0.99.2-v1
+            key: siril-0.99.7
 #        - run:
 #            name: Importing signing certificate
 #            command: |
