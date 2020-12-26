@@ -55,8 +55,8 @@ jobs:
         - restore_cache:
             keys:
               - siril-0.99.7
-              - siril-deps-v6
-              - bootstrap-v3
+              - siril-deps-v7
+              - bootstrap-v4
         - run:
             name: Bootstrap
             command: source ~/.profile && jhbuild build icu55 meta-gtk-osx-freetype meta-gtk-osx-bootstrap meta-gtk-osx-core
@@ -66,7 +66,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: bootstrap-v3
+            key: bootstrap-v4
         - run:
             name: Build Siril dependencies
             command: source ~/.profile && jhbuild build $(jhbuild info siril|grep '^Requires:'|sed -e 's|^Requires:||' -e 's|gegl||'|tr -d ',')
@@ -76,7 +76,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-deps-v6
+            key: siril-deps-v7
         - run:
             name: Build SIRIL
             command: |
