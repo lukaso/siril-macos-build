@@ -8,6 +8,10 @@ then
   exit 2
 fi
 
+#FIXME: ugly patch to restore correct path lib (cfitsio and wcslib)
+install_name_tool -change libwcs.7.3.1.dylib /Users/distiller/gtk/inst/lib/libwcs.7.dylib  /Users/distiller/gtk/inst/bin/siril
+install_name_tool -change @rpath/libcfitsio.9.dylib /Users/distiller/gtk/inst/lib/libcfitsio.9.dylib  /Users/distiller/gtk/inst/bin/siril
+
 printf "Determining SIRIL version: "
 
 rm -f SIRIL_VERSION
