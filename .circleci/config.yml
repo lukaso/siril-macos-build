@@ -55,7 +55,7 @@ jobs:
         - restore_cache:
             keys:
               - siril-0.99.7
-              - siril-deps-v8
+              - siril-deps-v9
               - bootstrap-v5
         - run:
             name: Bootstrap
@@ -76,7 +76,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-deps-v8
+            key: siril-deps-v9
         - run:
             name: Build SIRIL
             command: |
