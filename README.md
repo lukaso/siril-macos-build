@@ -1,6 +1,6 @@
 # Build SiriL/macOS inside CircleCI
 
-This repository contains files related to GIMP/macOS build using CircleCI.
+This repository contains files related to SiriL/macOS build using CircleCI.
 
 ## Build process description
 
