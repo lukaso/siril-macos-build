@@ -52,7 +52,7 @@ then
     --timestamp \
     --deep \
     --options runtime \
-    --entitlements ${HOME}/project/package/gimp-hardening.entitlements \
+    --entitlements ${HOME}/project/package/siril-hardening.entitlements \
     ${PACKAGE_DIR}/SiriL.app
 fi
 
