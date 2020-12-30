@@ -52,8 +52,8 @@ jobs:
               cd gtk-mac-bundler
               make install
         # we can try to make it automatically depended on the corresponding modules
-        - restore_cache:
-            keys:
+        #- restore_cache:
+         #   keys:
          #     - siril-0.99.7
          #     - siril-deps-v10
          #     - bootstrap-v6
