@@ -54,9 +54,9 @@ jobs:
         # we can try to make it automatically depended on the corresponding modules
         - restore_cache:
             keys:
-              - siril-0.99.7
-              - siril-deps-v10
-              - bootstrap-v6
+         #     - siril-0.99.7
+         #     - siril-deps-v10
+         #     - bootstrap-v6
         - run:
             name: Bootstrap
             command: source ~/.profile && jhbuild build icu55 meta-gtk-osx-freetype meta-gtk-osx-bootstrap meta-gtk-osx-gtk3
