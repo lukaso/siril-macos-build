@@ -54,9 +54,9 @@ jobs:
         # we can try to make it automatically depended on the corresponding modules
         - restore_cache:
             keys:
-              - siril-0.99.7
+              - siril-0.99.8
               - siril-deps-v10
-              - bootstrap-v6
+              - bootstrap-v7
         - run:
             name: Bootstrap
             command: source ~/.profile && jhbuild build icu55 meta-gtk-osx-freetype meta-gtk-osx-bootstrap meta-gtk-osx-gtk3
@@ -66,7 +66,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: bootstrap-v6
+            key: bootstrap-v7
         - run:
             name: Build Siril dependencies
             command: source ~/.profile && jhbuild build $(jhbuild info siril|grep '^Requires:'|sed -e 's|^Requires:||' -e 's|gegl||'|tr -d ',')
@@ -85,7 +85,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-0.99.7
+            key: siril-0.99.8
 #        - run:
 #            name: Importing signing certificate
 #            command: |
