@@ -54,8 +54,8 @@ jobs:
         # we can try to make it automatically depended on the corresponding modules
         - restore_cache:
             keys:
-              - siril-0.99.10.1
-              - siril-deps-v12
+              - siril-0.99.11
+              - siril-deps-v13
               - bootstrap-v8
         - run:
             name: Bootstrap
@@ -76,7 +76,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-deps-v12
+            key: siril-deps-v13
         - run:
             name: Build SIRIL
             command: |
@@ -85,7 +85,7 @@ jobs:
         - save_cache:
             paths:
               - ~/gtk
-            key: siril-0.99.10.1
+            key: siril-0.99.11
 #        - run:
 #            name: Importing signing certificate
 #            command: |
