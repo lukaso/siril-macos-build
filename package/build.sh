@@ -84,6 +84,7 @@ cd create-dmg
   --app-drop-link 450 360 \
   --format UDBZ \
   --hdiutil-verbose \
+  --skip-jenkins \
   "/tmp/artifacts/${DMGNAME}" \
   "$PACKAGE_DIR/"
 rm -f /tmp/artifacts/rw.*.dmg
