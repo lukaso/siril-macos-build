@@ -24,7 +24,7 @@ jobs:
               echo 'export MACOSX_DEPLOYMENT_TARGET=10.12' >> ~/.profile
         - restore_cache:
             keys:
-              - jhbuild-v12
+              - jhbuild-v13
         - run:
             name: Setup JHBuild
             command: |
@@ -43,7 +43,7 @@ jobs:
               - ~/.new_local
               - ~/gtk
               - ~/.config
-            key: jhbuild-v12
+            key: jhbuild-v13
         - run:
             name: Setup gtk-mac-bundler
             command: |
