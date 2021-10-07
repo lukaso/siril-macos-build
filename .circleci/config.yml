@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build-siril-master:
     macos:
-        xcode: "10.3.0"
+        xcode: "12.5.1"
 
     steps:
         - checkout
@@ -29,11 +29,13 @@ jobs:
             name: Setup JHBuild
             command: |
               cd $HOME
-              mkdir -p ~/.config && mv ~/project/jhbuildrc-gtk-osx-gimp ~/.config/jhbuildrc-custom
-              curl -k https://gitlab.gnome.org/samm-git/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
+              mkdir -p ~/.config && cp ~/project/jhbuildrc-gtk-osx-gimp ~/.config/jhbuildrc-custom
+              curl https://gitlab.gnome.org/lukaso/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
               chmod +x gtk-osx-setup.sh
               echo 'export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH:$HOME/.new_local/bin"' >> ~/.profile
               echo 'export ARCHFLAGS="-arch x86_64"' >> ~/.profile
+              # PYTHON variable seems to be incorrectly set
+              echo 'export PYTHON=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3' >> ~/.profile 
               source ~/.profile
               PIPENV_YES=1 ./gtk-osx-setup.sh
               $HOME/.new_local/bin/jhbuild bootstrap-gtk-osx-gimp
