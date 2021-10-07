@@ -24,7 +24,7 @@ jobs:
               echo 'export MACOSX_DEPLOYMENT_TARGET=10.12' >> ~/.profile
         - restore_cache:
             keys:
-              - jhbuild-v13
+              - jhbuild-v14
         - run:
             name: Setup JHBuild
             command: |
@@ -35,7 +35,7 @@ jobs:
               echo 'export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH:$HOME/.new_local/bin"' >> ~/.profile
               echo 'export ARCHFLAGS="-arch x86_64"' >> ~/.profile
               # PYTHON variable seems to be incorrectly set
-              echo 'export PYTHON=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3' >> ~/.profile 
+              #echo 'export PYTHON=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3' >> ~/.profile 
               source ~/.profile
               PIPENV_YES=1 ./gtk-osx-setup.sh
               $HOME/.new_local/bin/jhbuild bootstrap-gtk-osx-gimp
@@ -45,7 +45,7 @@ jobs:
               - ~/.new_local
               - ~/gtk
               - ~/.config
-            key: jhbuild-v13
+            key: jhbuild-v14
         - run:
             name: Setup gtk-mac-bundler
             command: |
