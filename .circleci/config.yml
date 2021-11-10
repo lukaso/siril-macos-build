@@ -38,6 +38,7 @@ jobs:
               chmod +x gtk-osx-setup.sh
               echo 'export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH:$HOME/.new_local/bin"' >> ~/.profile
               echo 'export ARCHFLAGS="-arch x86_64"' >> ~/.profile
+              echo 'export PYENV_VERSION="3.9.7"' >> ~/.profile
               # PYTHON variable seems to be incorrectly set
               #echo 'export PYTHON=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3' >> ~/.profile 
               source ~/.profile
