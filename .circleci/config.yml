@@ -28,13 +28,13 @@ jobs:
               echo 'export MACOSX_DEPLOYMENT_TARGET=10.12' >> ~/.profile
         - restore_cache:
             keys:
-              - jhbuild-v17
+              - jhbuild-v18
         - run:
             name: Setup JHBuild
             command: |
               cd $HOME
               mkdir -p ~/.config && cp ~/project/jhbuildrc-gtk-osx-gimp ~/.config/jhbuildrc-custom
-              curl https://gitlab.gnome.org/lock042/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
+              curl https://gitlab.gnome.org/samm-git/gtk-osx/raw/gimp/gtk-osx-setup.sh > gtk-osx-setup.sh
               chmod +x gtk-osx-setup.sh
               echo 'export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH:$HOME/.new_local/bin"' >> ~/.profile
               echo 'export ARCHFLAGS="-arch x86_64"' >> ~/.profile
@@ -51,7 +51,7 @@ jobs:
               - ~/.new_local
               - ~/gtk
               - ~/.config
-            key: jhbuild-v17
+            key: jhbuild-v18
         - run:
             name: Setup gtk-mac-bundler
             command: |
