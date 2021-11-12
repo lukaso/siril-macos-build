@@ -65,7 +65,6 @@ jobs:
               - bootstrap-v11
         - run:
             name: Bootstrap
-            command: |
             command: source ~/.profile && jhbuild build icu libnsgif meta-gtk-osx-freetype meta-gtk-osx-bootstrap meta-gtk-osx-gtk3
         - run:
             name: Cleanup
