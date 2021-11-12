@@ -9,10 +9,10 @@ then
 fi
 
 #FIXME: ugly patch to restore correct path lib (cfitsio and wcslib)
-install_name_tool -change libwcs.7.dylib /Users/distiller/gtk/inst/lib/libwcs.7.dylib  /Users/distiller/gtk/inst/bin/siril
-install_name_tool -change libwcs.7.dylib /Users/distiller/gtk/inst/lib/libwcs.7.dylib  /Users/distiller/gtk/inst/bin/siril-cli
-install_name_tool -change @rpath/libcfitsio.9.dylib /Users/distiller/gtk/inst/lib/libcfitsio.9.dylib  /Users/distiller/gtk/inst/bin/siril
-install_name_tool -change @rpath/libcfitsio.9.dylib /Users/distiller/gtk/inst/lib/libcfitsio.9.dylib  /Users/distiller/gtk/inst/bin/siril-cli
+install_name_tool -change libwcs.7.3.1.dylib ${HOME}/gtk/inst/lib/libwcs.7.3.1.dylib  ${HOME}/gtk/inst/bin/siril
+install_name_tool -change libwcs.7.3.1.dylib ${HOME}/gtk/inst/lib/libwcs.7.3.1.dylib  ${HOME}/gtk/inst/bin/siril-cli
+install_name_tool -change @rpath/libcfitsio.9.dylib ${HOME}/gtk/inst/lib/libcfitsio.9.dylib  ${HOME}/gtk/inst/bin/siril
+install_name_tool -change @rpath/libcfitsio.9.dylib ${HOME}/gtk/inst/lib/libcfitsio.9.dylib  ${HOME}/gtk/inst/bin/siril-cli
 
 printf "Determining SIRIL version: "
 
@@ -68,7 +68,7 @@ fi
 
 mkdir -p /tmp/artifacts/
 rm -f /tmp/tmp.dmg
-rm -f "siril-${SIRIL_VERSION}-x86_64.dmg"
+rm -f "/tmp/artifacts/siril-${SIRIL_VERSION}-x86_64.dmg"
 
 cd create-dmg
 
